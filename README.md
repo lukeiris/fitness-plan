@@ -1,39 +1,20 @@
-# fitness-plan-source
+# 增肌训练计划网页
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+这是一个纯静态网页，无需安装依赖或构建。训练记录通过 Supabase 登录后同步到云端。
 
-#### 软件架构
-软件架构说明
+## 发布方法
 
+将本文件夹内的 `index.html` 上传到任意静态网页托管服务即可，例如 GitHub Pages、Cloudflare Pages、Netlify 或 Vercel。
 
-#### 安装教程
+如果服务要求选择发布目录，请选择当前文件夹的根目录。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 首次启用云端同步
 
-#### 使用说明
+1. 在 Supabase Dashboard 打开 **SQL Editor**。
+2. 打开并复制本目录的 `supabase-schema.sql`，粘贴后点击 Run。
+3. 在 Supabase 的 Authentication 设置中确认 Email 登录已启用；若启用确认邮件，请将 Gitee Pages 的网址加入 Redirect URLs。
+4. 发布网页后，使用邮箱注册并登录。训练记录会自动同步到当前账户。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 本地打开
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+直接双击 `index.html` 即可使用。训练打卡、日历与计时器数据保存在浏览器本地；换浏览器、清除站点数据或换设备不会自动同步。
