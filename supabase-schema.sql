@@ -17,8 +17,15 @@ create table if not exists public.body_metrics (
   primary key (user_id, metric_date)
 );
 
+create table if not exists public.user_settings (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  plan jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
 alter table public.workout_entries enable row level security;
 alter table public.body_metrics enable row level security;
+alter table public.user_settings enable row level security;
 
 drop policy if exists "Read own workout entries" on public.workout_entries;
 create policy "Read own workout entries"
@@ -61,4 +68,26 @@ with check ((select auth.uid()) = user_id);
 
 create policy "Delete own body metrics"
 on public.body_metrics for delete to authenticated
+using ((select auth.uid()) = user_id);
+
+drop policy if exists "Read own user settings" on public.user_settings;
+drop policy if exists "Insert own user settings" on public.user_settings;
+drop policy if exists "Update own user settings" on public.user_settings;
+drop policy if exists "Delete own user settings" on public.user_settings;
+
+create policy "Read own user settings"
+on public.user_settings for select to authenticated
+using ((select auth.uid()) = user_id);
+
+create policy "Insert own user settings"
+on public.user_settings for insert to authenticated
+with check ((select auth.uid()) = user_id);
+
+create policy "Update own user settings"
+on public.user_settings for update to authenticated
+using ((select auth.uid()) = user_id)
+with check ((select auth.uid()) = user_id);
+
+create policy "Delete own user settings"
+on public.user_settings for delete to authenticated
 using ((select auth.uid()) = user_id);

@@ -21,4 +21,4 @@
 
 ## 本次功能升级后需要做的事
 
-本次新增了逐组训练记录（次数、负重、RIR）及体重趋势。请再次运行一次 `supabase-schema.sql`；它会安全地创建 `body_metrics` 表及其权限，不会删除原有训练记录。
+本次新增了逐组训练记录（次数、负重、RIR）、体重趋势和个人动作编辑。请再次运行一次 `supabase-schema.sql`；它会安全地创建 `body_metrics`、`user_settings` 表及其权限，不会删除原有训练记录。
